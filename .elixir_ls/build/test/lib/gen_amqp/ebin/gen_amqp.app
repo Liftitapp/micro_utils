@@ -1,0 +1,12 @@
+{application,gen_amqp,
+             [{applications,[kernel,stdlib,elixir,logger,elixir_uuid,poolboy,
+                             amqp]},
+              {description,"GenAMQP is a set of utilities to make microservices using the worker pattern\n"},
+              {modules,['Elixir.GenAMQP','Elixir.GenAMQP.Chan',
+                        'Elixir.GenAMQP.Client','Elixir.GenAMQP.Conn',
+                        'Elixir.GenAMQP.ConnSupervisor',
+                        'Elixir.GenAMQP.PoolWorker','Elixir.GenAMQP.Server',
+                        'Elixir.GenAMQP.Server.Behaviour']},
+              {registered,[]},
+              {vsn,"6.0.0"},
+              {mod,{'Elixir.GenAMQP',[]}}]}.
