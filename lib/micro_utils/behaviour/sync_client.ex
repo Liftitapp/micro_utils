@@ -1,3 +1,3 @@
 defmodule MicroUtils.Behaviour.SyncClient do
-  @callback call(any(), map()) :: {:reply, any()}
+  @callback call(binary(), Keyword.t()) :: {:reply, any()}
 end

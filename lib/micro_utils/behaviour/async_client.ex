@@ -1,3 +1,3 @@
 defmodule MicroUtils.Behaviour.AsyncClient do
-  @callback publish(any(), Keyword.t()) :: :noreply
+  @callback publish(binary(), Keyword.t()) :: :noreply
 end
