@@ -1,4 +1,4 @@
-defmodule MicroUtils.AMQP.Client do
+defmodule MicroUtils.AMQP.AsyncClient do
   @behaviour MicroUtils.Behaviour.AsyncClient
   alias GenAMQP.Client
 

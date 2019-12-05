@@ -1,3 +1,6 @@
 defmodule MicroUtils.Behaviour.SyncServer do
-  @callback execute(any(), map()) :: {:reply, any()}
+  @type payload :: any()
+  @type context :: map()
+
+  @callback execute(payload(), context()) :: {:reply, any()}
 end

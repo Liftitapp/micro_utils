@@ -1,3 +1,6 @@
 defmodule MicroUtils.Behaviour.AsyncServer do
-  @callback execute(any(), map()) :: :noreply
+  @type payload :: any()
+  @type context :: map()
+
+  @callback execute(payload(), context()) :: :noreply
 end
