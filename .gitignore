@@ -23,3 +23,6 @@ erl_crash.dump
 micro_utils-*.tar
 
 .elixir_ls
+
+log/
+log/**.log
