@@ -32,7 +32,7 @@ defmodule MicroUtils.MixProject do
       # {:dep_from_hexpm, "~> 0.3.0"},
       {:plug, "~> 1.8"},
       {:httpoison, "~> 1.6"},
-      {:gen_amqp, "~> 6.0.0"},
+      {:gen_amqp, "~> 7.0.0"},
       {:jason, "~> 1.1", only: :test},
       {:phoenix, "~> 1.4", only: :test},
       {:plug_cowboy, "~> 2.1", only: :test},
