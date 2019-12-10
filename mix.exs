@@ -21,7 +21,7 @@ defmodule MicroUtils.MixProject do
       [extra_applications: [:logger], mod: {TestApp, []}]
     else
       [
-        extra_applications: [:logger]
+        applications: []
       ]
     end
   end
@@ -30,7 +30,12 @@ defmodule MicroUtils.MixProject do
   defp deps do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
+      {:plug, "~> 1.8"},
+      {:httpoison, "~> 1.6"},
       {:gen_amqp, path: "../gen_amqp"},
+      {:jason, "~> 1.1", only: :test},
+      {:phoenix, "~> 1.4", only: :test},
+      {:plug_cowboy, "~> 2.1", only: :test},
       {:mock, "~> 0.3.4", only: :test}
     ]
   end

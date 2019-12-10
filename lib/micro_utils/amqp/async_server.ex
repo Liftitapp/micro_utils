@@ -1,6 +1,12 @@
 defmodule MicroUtils.AMQP.AsyncServer do
   # opts can receive the :before and :after keys in order to execute
   # operations after and before the execute function be called
+  defmodule Behaviour do
+    use MicroUtils.Behaviour.AsyncServer,
+      payload_type: binary(),
+      context_type: map()
+  end
+
   defmacro __using__(opts) do
     opts =
       if Keyword.get(opts, :use_dlx, false) do
@@ -11,7 +17,7 @@ defmodule MicroUtils.AMQP.AsyncServer do
         opts
       end
 
-    opts = Keyword.put_new(opts, :behaviour, MicroUtils.Behaviour.AsyncServer)
+    opts = Keyword.put_new(opts, :behaviour, MicroUtils.AMQP.AsyncServer.Behaviour)
 
     quote do
       use GenAMQP.Server, unquote(opts)

@@ -7,7 +7,8 @@ defmodule TestApp do
   def start(_type, _args) do
     # Define supervisors and child supervisors to be supervised
     children = [
-      supervisor(TestServers.NothingServer, [])
+      supervisor(TestServers.NothingServer, []),
+      supervisor(TestEndpoint, [])
     ]
 
     opts = [strategy: :one_for_one]
