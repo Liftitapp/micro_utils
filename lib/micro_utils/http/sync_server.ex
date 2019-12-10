@@ -1,6 +1,8 @@
 defmodule MicroUtils.HTTP.SyncServer do
   defmacro __using__(opts) do
     subrouter = Keyword.fetch!(opts, :subrouter)
+    before_funcs = Keyword.get(opts, :before_funcs, [])
+    after_funcs = Keyword.get(opts, :after_funcs, [])
 
     quote do
       use MicroUtils.Behaviour.SyncServer,
@@ -8,6 +10,7 @@ defmodule MicroUtils.HTTP.SyncServer do
         context_type: Plug.Conn.t(),
         return_type: Plug.Conn.t()
 
+      alias MicroUtils.Pipeline
       import Plug.Conn
 
       def execute(conn, %{"path" => path} = payload) do
@@ -19,7 +22,11 @@ defmodule MicroUtils.HTTP.SyncServer do
           |> put_status(:not_found)
           |> halt()
         else
-          apply(mod, :execute, [payload, conn])
+          exec_func = fn conn ->
+            apply(mod, :execute, [payload, conn])
+          end
+
+          Pipeline.make(exec_func, unquote(before_funcs), unquote(after_funcs)).([conn])
         end
       end
     end
