@@ -26,7 +26,7 @@ defmodule MicroUtils.HTTP.SyncServer do
             apply(mod, :execute, [payload, conn])
           end
 
-          Pipeline.make(exec_func, unquote(before_funcs), unquote(after_funcs)).([conn])
+          Pipeline.make(exec_func, unquote(before_funcs), unquote(after_funcs)).([conn, payload])
         end
       end
     end
