@@ -22,11 +22,11 @@ defmodule MicroUtils.HTTP.SyncServer do
           |> put_status(:not_found)
           |> halt()
         else
-          exec_func = fn conn ->
+          exec_func = fn payload, conn ->
             apply(mod, :execute, [payload, conn])
           end
 
-          Pipeline.make(exec_func, unquote(before_funcs), unquote(after_funcs)).([conn, payload])
+          Pipeline.make(exec_func, unquote(before_funcs), unquote(after_funcs)).([payload, conn])
         end
       end
     end
